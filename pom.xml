@@ -8,6 +8,12 @@
 	<version>1.0-SNAPSHOT</version>
 	<name>seelocal-spark-playground</name>
 	<url>http://maven.apache.org</url>
+
+	<properties>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<java.version>1.8</java.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
@@ -25,7 +31,34 @@
 			<artifactId>spark-mllib_2.12</artifactId>
 			<version>2.4.0</version>
 		</dependency>
-
-
 	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>exec-maven-plugin</artifactId>
+				<version>1.6.0</version>
+				<executions>
+					<execution>
+						<id>keyword</id>
+						<goals>
+							<goal>exec</goal>
+						</goals>
+						<configuration>
+							<executable>java</executable>
+							<arguments>
+								<argument>-Xmx14g</argument>
+								<argument>-classpath</argument>
+								<classpath />
+								<argument>citylabs.App</argument>
+								<argument>${app.input}</argument>
+								<argument>${app.output}</argument>
+							</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 </project>
