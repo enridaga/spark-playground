@@ -41,7 +41,7 @@
 				<version>1.6.0</version>
 				<executions>
 					<execution>
-						<id>keyword</id>
+						<id>txt2parquet</id>
 						<goals>
 							<goal>exec</goal>
 						</goals>
